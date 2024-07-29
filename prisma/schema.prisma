@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Product {
-  id          String      @unique @default(uuid())
+  id          String      @id @unique @default(uuid())
   name        String      @db.VarChar(255)
   description String
   image       String
@@ -24,7 +24,8 @@ model Product {
 }
 
 model ProductType {
-  id      String    @unique @db.VarChar(127)
+  id      String    @id @unique @db.VarChar(127)
   name    String    @db.VarChar(255)
+  order   Int       @default(autoincrement())
   Product Product[]
 }
