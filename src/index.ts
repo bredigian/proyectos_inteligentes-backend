@@ -1,5 +1,6 @@
 import { $connect, $disconnect } from "./services/prisma.service"
 
+import ContactRouter from "./routes/contact.routes"
 import Express from "express"
 import ProductsRouter from "./routes/products.route"
 import { config } from "dotenv"
@@ -15,6 +16,7 @@ app.use(Express.json())
 $connect()
 
 app.use("/products", ProductsRouter)
+app.use("/contact", ContactRouter)
 
 app.get("/", (_, res) => {
   res.json({ message: "Proyectos Inteligentes's API" })
